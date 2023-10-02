@@ -14,15 +14,13 @@ import java.util.Optional;
 public class ProjectController {
 
     @Autowired
-    private ProjectService projectService; // Inject the ProjectService
+    private ProjectService projectService;
 
-    // Get all projects
     @GetMapping
     public List<ProjectDTO> getAllProjects() {
         return projectService.getAllProjects();
     }
 
-    // Get project by ID
     @GetMapping("/{id}")
     public ResponseEntity<ProjectDTO> getProjectById(@PathVariable Long id) {
         Optional<ProjectDTO> project = projectService.getProjectById(id);
@@ -33,14 +31,12 @@ public class ProjectController {
         }
     }
 
-    // Create a new project
     @PostMapping
     public ResponseEntity<ProjectDTO> createProject(@RequestBody ProjectDTO projectDTO) {
         ProjectDTO createdProject = projectService.createProject(projectDTO);
         return ResponseEntity.ok(createdProject);
     }
 
-    // Update an existing project
     @PutMapping("/{id}")
     public ResponseEntity<ProjectDTO> updateProject(@PathVariable Long id, @RequestBody ProjectDTO updatedProjectDTO) {
         Optional<ProjectDTO> project = projectService.updateProject(id, updatedProjectDTO);
@@ -51,7 +47,6 @@ public class ProjectController {
         }
     }
 
-    // Delete a project by ID
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProject(@PathVariable Long id) {
         if (projectService.deleteProject(id)) {

@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class ProjectService {
 
     @Autowired
-    private ProjectRepository projectRepository; // Inject the ProjectRepository
+    private ProjectRepository projectRepository;
 
     public List<ProjectDTO> getAllProjects() {
         List<Project> projects = projectRepository.findAll();
